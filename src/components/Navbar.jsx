@@ -41,22 +41,22 @@ const Navbar = () => {
 
 
   return (
-    <div className='w-full flex flex-col fixed'>
+    <div className='w-full flex flex-col fixed top-0 border-b-[1px] z-10 border-gray-300'>
       <div className='flex justify-center items-center bg-black p-2'>
         <div>
           <p className='text-white text-sm max-[520px]:text-[12px] max-[520px]:text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a className='font-bold underline ml-1'>ShopNow</a></p>
         </div>
       </div>
 
-      <div className='relative w-full flex justify-between p-2 pt-6 px-2 min-[876px]:px-20 shadow-md'>
+      <div className='relative w-full flex justify-between p-2 pt-6 px-2 min-[876px]:px-20 bg-white'>
         <div className='font-bold text-3xl hidden min-[470px]:block'><a href="/">Lashodia.</a></div>
 
         <div className=' mx-2 hidden md:block '>
           <ul className='flex flex-shrink h-full justify-between gap-4 min-[950px]:gap-10 items-center font-semibold'>
-            <li className='hover:border-b-2 border-black transition-all cursor-pointer'>Home</li>
-            <li className='hover:border-b-2 border-black transition-all cursor-pointer'>Contact</li>
-            <li className='hover:border-b-2 border-black transition-all cursor-pointer'>About</li>
-            <li className='hover:border-b-2 border-black transition-all cursor-pointer'>SignUp</li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>Home</li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>Contact</li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>About</li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>SignUp</li>
           </ul>
         </div>
 
