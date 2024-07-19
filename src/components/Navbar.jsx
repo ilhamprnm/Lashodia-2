@@ -41,7 +41,7 @@ const Navbar = () => {
 
 
   return (
-    <div className='w-full flex flex-col fixed top-0 border-b-[1px] z-10 border-gray-300'>
+    <div className='w-full flex flex-col fixed top-0 border-b-[1px] z-[10000] border-gray-300'>
       <div className='flex justify-center items-center bg-black p-2'>
         <div>
           <p className='text-white text-sm max-[520px]:text-[12px] max-[520px]:text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <a className='font-bold underline ml-1'>ShopNow</a></p>
