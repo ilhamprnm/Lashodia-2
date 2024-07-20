@@ -22,6 +22,7 @@ const FlashSale = () => {
       </div>
 
       <CarouselSec />
+      <hr className='mt-8'/>
     </div>
     
   )

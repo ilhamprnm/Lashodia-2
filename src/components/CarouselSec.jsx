@@ -67,7 +67,7 @@ const CarouselSec = () => {
         
         const imgUrl = `../images/ratings/rating-${roundedRating}.png`;
 
-        return <div key={product.id} className='p-7 pl-0'>
+        return <div key={product.id} className='p-7 '>
         <div className='p-4 flex flex-col border rounded-md gap-1'>
           <div className='border-b-2 w-full py-4'>
             <img className='h-32 mx-auto' src={product.image} alt="product" />
@@ -76,10 +76,10 @@ const CarouselSec = () => {
             <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>
           </div>
           <div>
-            <p className='text-red-500'>${product.price} <s className='text-gray-500 text-sm'>$300</s></p>
+            <p className='text-red-500'>${product.price} <s className='text-gray-500 text-sm'>$1000</s></p>
           </div>
-          <div >
-            <img className='h-5' src={(`../images/ratings/rating-${roundedRating}.png`)} alt="" />
+          <div className='flex items-center gap-2'>
+            <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
           </div>
           <div>
             <button className='bg-black w-full text-white p-2 rounded-sm mt-2'>Add to Cart</button>
