@@ -1,8 +1,8 @@
 import React from 'react'
-import Navbar from "../components/Navbar.jsx"
-import Hero from "../components/Hero.jsx"
-import FlashSale from "../components/FlashSale.jsx"
-import Category from "../components/Category.jsx"
+import Navbar from "../components/Home/Navbar.jsx"
+import Hero from "../components/Home/Hero.jsx"
+import FlashSale from "../components/Home/FlashSale.jsx"
+import Category from "../components/Home/Category.jsx"
 
 const Home = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
-import search from "../icons/search.png";
-import wishlist from "../icons/wishlist.png";
-import cart from '../icons/cart.png';
+import search from "../../icons/search.png";
+import wishlist from "../../icons/wishlist.png";
+import cart from '../../icons/cart.png';
 import { useState } from 'react';
 
 const Navbar = () => {

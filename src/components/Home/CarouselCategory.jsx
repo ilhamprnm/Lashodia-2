@@ -1,14 +1,14 @@
 import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import phoneIcon from '../icons/phone-icon.png'
-import computerIcon from '../icons/computer-icon.png'
-import smartwatchIcon from '../icons/smartwatch-icon.png'
-import cameraIcon from '../icons/camera-icon.png'
-import gamingIcon from '../icons/gaming-icon.png'
-import headphoneIcon from '../icons/headphone-icon.png'
-import clothesIcon from '../icons/clothes-icon.png'
-import jacketIcon from '../icons/jacket-icon.png'
+import phoneIcon from '../../icons/phone-icon.png'
+import computerIcon from '../../icons/computer-icon.png'
+import smartwatchIcon from '../../icons/smartwatch-icon.png'
+import cameraIcon from '../../icons/camera-icon.png'
+import gamingIcon from '../../icons/gaming-icon.png'
+import headphoneIcon from '../../icons/headphone-icon.png'
+import clothesIcon from '../../icons/clothes-icon.png'
+import jacketIcon from '../../icons/jacket-icon.png'
 
 const CarouselCategory = () => {
   const responsive = {

@@ -1,5 +1,5 @@
 import React from 'react'
-import CarouselCategory from '../components/CarouselCategory.jsx'
+import CarouselCategory from './CarouselCategory.jsx'
 
 const Category = () => {
   return (

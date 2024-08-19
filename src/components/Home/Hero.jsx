@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
-import ads1 from "../images/ads-1.jpg"
-import ads2 from "../images/ads-2.webp"
-import ads3 from "../images/ads-3.webp"
+import ads1 from "../../images/ads-1.jpg"
+import ads2 from "../../images/ads-2.webp"
+import ads3 from "../../images/ads-3.webp"
 import { BsChevronCompactLeft, BsChevronCompactRight} from "react-icons/bs"
 import { RxDotFilled } from 'react-icons/rx'
 
