@@ -6,6 +6,7 @@ import Category from "../components/Home/Category.jsx"
 import BestSelling from '../components/Home/BestSelling.jsx'
 import Ads from '../components/Home/Ads.jsx'
 import OurProducts from '../components/Home/OurProducts.jsx'
+import NewArrival from '../components/Home/NewArrival.jsx'
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <BestSelling />
       <Ads />
       <OurProducts />
+      <NewArrival />
     </>
   )
 }

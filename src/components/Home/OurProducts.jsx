@@ -25,7 +25,7 @@ const OurProducts = () => {
       </div>
 
       <div>
-        <div className='flex flex-wrap'>
+        <div className='flex flex-wrap justify-center'>
           {products.slice(0, visibleProduct).map((product) => {
 
             const ratingValue = product.rating.rate * 10;
