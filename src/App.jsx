@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Wishlist from './pages/Wishlist.jsx'
+import Cart from './pages/Cart.jsx';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/Login' element={<Login />}/>
         <Route path='/Signup' element={<Signup />}/>
         <Route path='/Wishlist' element={<Wishlist />}/>
+        <Route path='/Cart' element={<Cart />} />
       </Routes>
     </Router>
   )
