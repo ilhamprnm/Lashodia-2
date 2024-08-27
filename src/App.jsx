@@ -8,6 +8,7 @@ import Cart from './pages/Cart.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
+import Product from './pages/Product.jsx';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/About' element={<About />} />
         <Route path='/Contact' element={<Contact />} />
         <Route path='/Error' element={<ErrorPage />} />
+        <Route path='/Product' element={<Product />} />
       </Routes>
     </Router>
   )
