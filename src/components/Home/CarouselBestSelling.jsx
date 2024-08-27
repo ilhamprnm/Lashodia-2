@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { products } from '../../data/product';
+import { Link } from 'react-router-dom';
 
 const CarouselBestSelling = () => {
   const responsive = {
@@ -28,7 +29,7 @@ const CarouselBestSelling = () => {
     }
   };
 
-  const sortedProducts = products.sort((a, b) => b.rating.count - a.rating.count);
+  const sortedProducts = [...products].sort((a, b) => b.rating.count - a.rating.count);
 
   const top10Products = sortedProducts.slice(0, 10);
 
@@ -71,7 +72,9 @@ const CarouselBestSelling = () => {
         return <div key={product.id} className='py-7 px-3 '>
                 <div className='p-4 flex flex-col border rounded-md gap-1'>
                   <div className='border-b-2 w-full py-4'>
-                    <img className='h-32 mx-auto' src={product.image} alt="product" />
+                    <Link to={`/product/${product.id}`}>
+                      <img className='h-32 mx-auto' src={product.image} alt="product" />
+                    </Link>
                   </div>
                   <div>
                     <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>

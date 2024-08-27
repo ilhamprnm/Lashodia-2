@@ -24,6 +24,7 @@ const CartSection = () => {
             productImage={product.image}
             productTitle={product.title}
             productPrice={product.price}
+            productId={product.id}
           />
         )
       })}

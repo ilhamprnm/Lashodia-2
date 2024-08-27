@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { products } from '../../data/product';
+import { Link } from 'react-router-dom';
 
 const OurProducts = () => {
   const [visibleProduct, setVisibleProduct] = useState(8);
@@ -62,7 +63,9 @@ const OurProducts = () => {
             return <div key={product.id} className='py-3 px-1 w-[270px] cursor-pointer'>
                       <div className='p-4 flex flex-col border rounded-md gap-1'>
                         <div className='border-b-2 w-full py-4'>
-                          <img className='h-32 mx-auto' src={product.image} alt="product" />
+                          <Link to={`/product/${product.id}`}>
+                            <img className='h-32 mx-auto' src={product.image} alt="product" />
+                          </Link>
                         </div>
                         <div>
                           <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>

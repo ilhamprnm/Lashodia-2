@@ -2,6 +2,7 @@ import React from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { products } from '../../data/product';
+import { Link } from 'react-router-dom';
 
 
 const CarouselSec = () => {
@@ -33,7 +34,7 @@ const CarouselSec = () => {
   
 
   return (
-    <Carousel responsive={responsive}>
+    <Carousel responsive={responsive} >
       {products.slice(0, 9).map((product) => {
 
         const ratingValue = product.rating.rate * 10;
@@ -70,7 +71,9 @@ const CarouselSec = () => {
         return <div key={product.id} className='py-7 px-3 '>
                 <div className='p-4 flex flex-col border rounded-md gap-1'>
                   <div className='border-b-2 w-full py-4'>
-                    <img className='h-32 mx-auto' src={product.image} alt="product" />
+                    <Link to={`/product/${product.id}`}>
+                      <img className='h-32 mx-auto' src={product.image} alt="product" />
+                    </Link>
                   </div>
                   <div>
                     <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>

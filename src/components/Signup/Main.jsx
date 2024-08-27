@@ -35,7 +35,7 @@ const Main = () => {
             </button>
           </div>
           <div className='text-center '>
-            <p>Already have account? <a href='' className='underline'>Log In</a></p>
+            <p>Already have account? <a href='/login' className='underline'>Log In</a></p>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import search from "../../icons/search.png";
 import wishlist from "../../icons/wishlist.png";
 import cart from '../../icons/cart.png';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -53,10 +54,10 @@ const Navbar = () => {
 
         <div className=' mx-2 hidden md:block '>
           <ul className='flex flex-shrink h-full justify-between gap-4 min-[950px]:gap-10 items-center font-semibold'>
-            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>Home</li>
-            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>Contact</li>
-            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>About</li>
-            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'>SignUp</li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'><Link to={'/'}>Home</Link></li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'><Link to={'/Contact'}>Contact</Link></li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'><Link to={'/About'}>About</Link></li>
+            <li className='hover:border-b-2 border-slate-300 transition-all cursor-pointer'><Link to={'/SignUp'}>SignUp</Link></li>
           </ul>
         </div>
 
@@ -68,13 +69,17 @@ const Navbar = () => {
 
           <div className='hidden md:block'>
             <div className=' flex items-center mx-3'>
-              <img  className="h-8 w-8 hover:cursor-pointer" src={wishlist} alt="wishlist-icon" />
+              <Link to={'/Wishlist'}>
+                <img  className="h-8 w-8 hover:cursor-pointer" src={wishlist} alt="wishlist-icon" />
+              </Link>
             </div>
           </div>
 
           <div className='hidden md:block'>  
             <div className=' flex items-center mr-3'>
-              <img className='h-7 w-7 hover:cursor-pointer' src={cart} alt="cart-icon" />
+              <Link to={'/Cart'}>
+                <img className='h-7 w-7 hover:cursor-pointer' src={cart} alt="cart-icon" />
+              </Link>
             </div>
           </div>
           
@@ -91,15 +96,15 @@ const Navbar = () => {
 
           <div id="dropdown-menu" className='absolute -translate-y-[470px] transition-transform duration-500 md:hidden p-4 bg-white top-[72px] left-0 right-0 w-full '>
             <ul className='flex flex-col items-center bg-slate-200 rounded-md overflow-hidden'>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">Home</a></li>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">About</a></li>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">Contact</a></li>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">SignUp</a></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/'}>Home</Link></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/Contact'}>Contact</Link></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/About'}>About</Link></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/Signup'}>SignUp</Link></li>
             </ul>
 
             <ul className='flex flex-col items-center bg-slate-200 rounded-md mt-4 overflow-hidden'>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">Cart</a></li>
-              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><a href="">Wishlist</a></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/Cart'}>Cart</Link></li>
+              <li className='p-3 w-full text-center hover:bg-slate-300 hover:cursor-pointer font-semibold'><Link to={'/Wishlist'}>Wishlist</Link></li>
         
             </ul>
           </div>
