@@ -7,6 +7,7 @@ import Wishlist from './pages/Wishlist.jsx'
 import Cart from './pages/Cart.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/Cart' element={<Cart />} />
         <Route path='/About' element={<About />} />
         <Route path='/Contact' element={<Contact />} />
+        <Route path='/Error' element={<ErrorPage />} />
       </Routes>
     </Router>
   )
