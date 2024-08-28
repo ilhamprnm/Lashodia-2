@@ -84,7 +84,7 @@ const CarouselBestSelling = (props) => {
                     <p className='text-red-500'>${product.price} <s className='text-gray-500 text-sm'>$1000</s></p>
                   </div>
                   <div className='flex items-center gap-2'>
-                    <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
+                    <img className='h-[18px]' src={(`/ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
                   </div>
                   <div>
                     <button className='bg-black w-full text-white p-2 rounded-sm mt-2'>Add to Cart</button>

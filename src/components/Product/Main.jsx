@@ -69,8 +69,8 @@ const Main = () => {
               <h2 className='font-bold text-xl'>{product.title}</h2>
             </div>
             <div className='flex gap-3 items-center'>
-              <img className='h-5' src={`ratings/rating-${roundedRating}.png`} alt="rating-image" />
-              <p>({product.rating.count} reviews)</p>
+              <img className='h-5' src={(`/ratings/rating-${roundedRating}.png`)} alt="rating-image" />
+              <p>({product.rating.count}) reviews</p>
             </div>
             <div className='border-b pb-4'>
               <p>{product.description}</p>
