@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { products } from '../../data/product';
 import { Link } from 'react-router-dom';
 
-const CarouselBestSelling = () => {
+const CarouselBestSelling = (props) => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -29,14 +29,15 @@ const CarouselBestSelling = () => {
     }
   };
 
-  const sortedProducts = [...products].sort((a, b) => b.rating.count - a.rating.count);
 
-  const top10Products = sortedProducts.slice(0, 10);
+  const filteredProducts = products.filter(product => props.productInDisplay.category === product.category)
+
+  const filterPID = filteredProducts.filter(product => props.productInDisplay.id != product.id)
 
 
   return (
     <Carousel responsive={responsive}>
-      {top10Products.map((product) => {
+      {filterPID.map((product) => {
 
         const ratingValue = product.rating.rate * 10;
         let roundedRating ; 

@@ -9,10 +9,12 @@ import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 import Product from './pages/Product.jsx';
+import ScrollToTop from './components/ScrollToTop.jsx';
 
 const App = () => {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/Login' element={<Login />}/>
