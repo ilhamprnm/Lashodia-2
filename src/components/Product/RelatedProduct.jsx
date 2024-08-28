@@ -8,7 +8,7 @@ const BestSelling = () => {
   const productInDisplay = products.find((e) => e.id === Number(productId))
 
   return (
-    <div className='mt-14 p-2 min-[876px]:px-20 flex flex-col gap-3'>
+    <div className='mt-14 p-2 min-[876px]:px-20 flex flex-col gap-3 pb-20'>
       <div className='flex gap-3'>
         <div className='w-5 h-7 bg-red-500 rounded-sm'>
         </div>
@@ -18,7 +18,7 @@ const BestSelling = () => {
       </div>
 
       <CarouselRelatedProduct productInDisplay={productInDisplay}/>
-      <hr className='mt-8'/>
+      
     </div>
   )
 }
