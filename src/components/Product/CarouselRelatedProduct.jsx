@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { products } from '../../data/product';
 import { Link } from 'react-router-dom';
+import { ShopContext } from '../../data/ShopContext';
 
 const CarouselBestSelling = (props) => {
+
+  const allProducts = useContext(ShopContext)
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -30,7 +34,7 @@ const CarouselBestSelling = (props) => {
   };
 
 
-  const filteredProducts = products.filter(product => props.productInDisplay.category === product.category)
+  const filteredProducts = allProducts.filter(product => props.productInDisplay.category === product.category)
 
   const filterPID = filteredProducts.filter(product => props.productInDisplay.id != product.id)
 
@@ -81,7 +85,7 @@ const CarouselBestSelling = (props) => {
                     <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>
                   </div>
                   <div>
-                    <p className='text-red-500'>${product.price} <s className='text-gray-500 text-sm'>$1000</s></p>
+                    <p className='text-red-500'>${product.new_price} <s className='text-gray-500 text-sm'>${product.old_price}</s></p>
                   </div>
                   <div className='flex items-center gap-2'>
                     <img className='h-[18px]' src={(`/ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>

@@ -1,9 +1,11 @@
-import React, {useState} from 'react'
-import { products } from '../../data/product';
+import React, {useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
+import { ShopContext } from '../../data/ShopContext';
 
 const OurProducts = () => {
   const [visibleProduct, setVisibleProduct] = useState(8);
+
+  const allProducts = useContext(ShopContext);
 
   const addVisibleProduct = () => {
     setVisibleProduct(visibleProduct + 20)
@@ -27,7 +29,7 @@ const OurProducts = () => {
 
       <div>
         <div className='flex flex-wrap justify-center'>
-          {products.slice(0, visibleProduct).map((product) => {
+          {allProducts.slice(0, visibleProduct).map((product) => {
 
             const ratingValue = product.rating.rate * 10;
             let roundedRating ; 
@@ -71,7 +73,7 @@ const OurProducts = () => {
                           <p className=' h-12 overflow-hidden font-semibold'>{product.title}</p>
                         </div>
                         <div>
-                          <p className='text-red-500'>${product.price} <s className='text-gray-500 text-sm'>$1000</s></p>
+                          <p className='text-red-500'>${product.new_price} <s className='text-gray-500 text-sm'>${product.old_price}</s></p>
                         </div>
                         <div className='flex items-center gap-2'>
                           <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
@@ -85,7 +87,7 @@ const OurProducts = () => {
         </div>
       </div>
 
-      <div className={`flex justify-center mt-8 ${visibleProduct >= products.length ? 'hidden' : ''}`}>
+      <div className={`flex justify-center mt-8 ${visibleProduct >= allProducts.length ? 'hidden' : ''}`}>
         <button className='bg-[#da4446] p-3 px-10 text-white font-semibold rounded' onClick={addVisibleProduct}>View All Products</button>
       </div>
 

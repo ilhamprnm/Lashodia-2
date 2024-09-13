@@ -14,7 +14,7 @@ const Item = (props) => {
           <p className=' h-12 overflow-hidden font-semibold'>{props.productTitle}</p>
         </div>
         <div>
-          <p className='text-red-500'>${props.productPrice} <s className='text-gray-500 text-sm'>$1000</s></p>
+          <p className='text-red-500'>${props.productNewPrice} <s className='text-gray-500 text-sm'>${props.productOldPrice}</s></p>
         </div>
         <div className='flex items-center gap-2'>
           <img className='h-[18px]' src={(`ratings/rating-${props.rating}.png`)} alt="rating" /> <span>({props.ratingCount})</span>

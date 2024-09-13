@@ -1,7 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 import sideImage from '../../images/side-image.png'
 
+
 const Main = () => {
+
+  const [formData,setFormData] = useState({
+    username:"",
+    email:"",
+    password:""
+  })
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value })
+    
+  }
+
+  const handleSignup = async () => {
+    console.log(formData)
+    let responseData;
+    await fetch('http://localhost:4000/signup', {
+      method:'POST',
+      headers: {
+        Accept:'application/form-data',
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then((response) => response.json()).then((data)=>{responseData = data});
+
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
+      window.location.replace('/');
+    } else {
+      alert(responseData.errors)
+    }
+  }
+
   return (
     <div className='mt-[130px] px-2 min-[876px]:px-20 flex justify-center pb-14'>
       <div className='min-[720px]:block hidden'>
@@ -14,18 +47,18 @@ const Main = () => {
         </div>
         <div className='flex flex-col gap-3 w-full'>
           <div className='w-[300px]'>
-            <input className='w-full border-b p-1 text-lg focus:outline-none' type="text" placeholder='Name'/>
+            <input className='w-full border-b p-1 text-lg focus:outline-none' name='username' value={formData.username} onChange={handleChange} type="text" placeholder='Name'/>
           </div>
           <div className='w-[300px]'>
-            <input className='w-full border-b p-1 text-lg focus:outline-none' type="email" placeholder='Email or Phone Number'/>
+            <input className='w-full border-b p-1 text-lg focus:outline-none' name='email' value={formData.email} onChange={handleChange} type="email" placeholder='Email or Phone Number'/>
           </div>
           <div className='w-[300px]'>
-            <input className='w-full border-b p-1 text-lg focus:outline-none' type="password" placeholder='Password'/>
+            <input className='w-full border-b p-1 text-lg focus:outline-none' name='password' value={formData.password} onChange={handleChange} type="password" placeholder='Password'/>
           </div>
         </div>
         <div className='flex flex-col justify-between gap-4'>
           <div>
-            <button className='bg-red-500 w-full text-white p-2 px-8 rounded'>
+            <button className='bg-red-500 w-full text-white p-2 px-8 rounded' onClick={handleSignup}>
               Create account
             </button>
           </div>

@@ -1,8 +1,11 @@
-import React from 'react'
-import { products } from '../../data/product'
+import React, { useContext } from 'react'
 import Item from '../Item'
+import { ShopContext } from '../../data/ShopContext'
 
 const WishSection = () => {
+
+  const allProducts = useContext(ShopContext)
+
   return (
     <div className='mt-[130px] px-2 min-[876px]:px-20 flex flex-col py-10'>
       <div className='flex justify-between'>
@@ -17,7 +20,7 @@ const WishSection = () => {
       </div>
 
       <div className=' mt-4 flex justify-center flex-wrap'>
-        {products.slice(0, 4).map((product) => {
+        {allProducts.slice(0, 4).map((product) => {
           const ratingValue = product.rating.rate * 10;
           let roundedRating ; 
           const roundRating = () => {
@@ -54,7 +57,8 @@ const WishSection = () => {
             productId={product.id}
             productImage={product.image}
             productTitle={product.title}
-            productPrice={product.price}
+            productNewPrice={product.new_price}
+            productOldPrice={product.old_price}
             rating={roundedRating}
             ratingCount={product.rating.count}
           />

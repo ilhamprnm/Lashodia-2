@@ -1,7 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import sideImage from '../../images/side-image.png'
 
 const Main = () => {
+
+  const [formData,setFormData] = useState({
+    email:"",
+    password:""
+  })
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]:e.target.value })
+    
+  }
+
+  const handleLogin = async () => {
+    console.log(formData)
+    let responseData;
+    await fetch('http://localhost:4000/login', {
+      method:'POST',
+      headers: {
+        Accept:'application/form-data',
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then((response) => response.json()).then((data)=>{responseData = data});
+
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
+      window.location.replace('/');
+    } else {
+      alert(responseData.errors)
+    }
+  }
+
   return (
     <div className='mt-[130px] px-2 min-[876px]:px-20 flex justify-center pb-14'>
       <div className='min-[720px]:block hidden'>
@@ -14,20 +45,20 @@ const Main = () => {
         </div>
         <div className='flex flex-col gap-3 w-full'>
           <div className='w-[300px]'>
-            <input className='w-full border-b p-1 text-lg focus:outline-none' type="email" placeholder='Email or Phone Number'/>
+            <input className='w-full border-b p-1 text-lg focus:outline-none' name='email' value={formData.email} onChange={handleChange} type="email" placeholder='Email or Phone Number'/>
           </div>
           <div className='w-[300px]'>
-            <input className='w-full border-b p-1 text-lg focus:outline-none' type="password" placeholder='Password'/>
+            <input className='w-full border-b p-1 text-lg focus:outline-none' name='password' value={formData.password} onChange={handleChange} type="password" placeholder='Password'/>
           </div>
         </div>
         <div className='flex justify-between'>
           <div className='bg-slate-100'>
-            <button className='bg-red-500 text-white p-2 px-8 rounded'>
+            <button className='bg-red-500 text-white p-2 px-8 rounded' onClick={handleLogin}>
               Log In
             </button>
           </div>
           <div>
-            <span className='text-red-500'>Forget password?</span>
+            <span className='text-red-500 cursor-pointer'>Forget password?</span>
           </div>
         </div>
       </div>

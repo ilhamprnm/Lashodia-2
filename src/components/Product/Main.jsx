@@ -1,14 +1,20 @@
-import React from 'react'
-import { products } from '../../data/product'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import cartIcon from '../../icons/cart.png'
 import deliveryIcon from '../../icons/icon-delivery.png'
 import returnIcon from '../../icons/Icon-return.png'
+import { ShopContext } from '../../data/ShopContext'
 
 const Main = () => {
 
+  const allProducts = useContext(ShopContext)
+
   const {productId} = useParams();
-  const product = products.find((e) => e.id === Number(productId))
+  const product = allProducts.find((e) => e.id === Number(productId))
+
+  if (!allProducts || allProducts.length === 0) {
+    return <div>Loading...</div>; // You can show a loading spinner or message
+  }
 
   const ratingValue = product.rating.rate * 10;
 

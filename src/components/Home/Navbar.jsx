@@ -4,6 +4,8 @@ import wishlist from "../../icons/wishlist.png";
 import cart from '../../icons/cart.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import userIcon from '../../icons/user-icon.png';
+import logoutIcon from '../../icons/logout.png'
 
 const Navbar = () => {
 
@@ -61,27 +63,61 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className='flex flex-1 ml-3 min-[500px]:flex-none'>
+        <div className='flex flex-1 ml-3 min-[500px]:flex-none gap-3'>
           <div className=' flex flex-1 w-full h-full items-center bg-[#F5F5F5] rounded-md'>
             <input className='h-full w-full p-2 bg-transparent focus:outline-none' placeholder="Search" type="text"/>
             <a className='h-full w-14 flex items-center justify-center hover:cursor-pointer'><img className='h-6 w-6' src={search} alt="Search-icon" /></a>
           </div>
 
-          <div className='hidden md:block'>
-            <div className=' flex items-center mx-3'>
+        <div className='hidden md:block'>
+          <div className='flex'>
+            <div className=' flex items-center mx-3 relative'>
               <Link to={'/Wishlist'}>
                 <img  className="h-8 w-8 hover:cursor-pointer" src={wishlist} alt="wishlist-icon" />
               </Link>
+              <div className='bg-red-500 rounded-full h-5 w-5 absolute left-[18px] top-0 flex justify-center items-center'>
+                <span className='text-sm text-white'>4</span>
+              </div>
             </div>
-          </div>
-
-          <div className='hidden md:block'>  
-            <div className=' flex items-center mr-3'>
+            
+            <div className=' flex items-center mr-3 relative'>
               <Link to={'/Cart'}>
                 <img className='h-7 w-7 hover:cursor-pointer' src={cart} alt="cart-icon" />
               </Link>
+              <div className='bg-red-500 rounded-full h-5 w-5 absolute left-[18px] top-0 flex justify-center items-center'>
+                <span className='text-sm text-white'>3</span>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div className='flex items-center relative group rounded'>
+          <Link to={'/login'}>
+            <img src={userIcon} className='h-8' alt="user-icon" />
+          </Link>
+
+          {localStorage.getItem('auth-token')
+          ?<div className='absolute top-14 right-0  p-2 rounded bg-gradient-to-r from-gray-600  via-gray-500 to-gray-600 text-white opacity-0 group-hover:opacity-90 transition-opacity font-semibold'>
+              <Link>
+                <button className='p-2 rounded cursor-pointer hover:bg-gray-700 flex min-w-40 items-center gap-3'>
+                  <img className='h-6' src={logoutIcon} alt="logout" />
+                  <span>Logout</span>
+                </button>
+              </Link>
+           </div>
+          : <div className='absolute top-14 right-0  p-2 rounded bg-gradient-to-r from-gray-600  via-gray-500 to-gray-600 text-white opacity-0 group-hover:opacity-90 transition-opacity font-semibold'>
+              <Link to={'/login'}>
+                <button className='p-2 rounded cursor-pointer hover:bg-gray-700 flex min-w-40 items-center gap-3'>
+                  <img className='h-6' src={logoutIcon} alt="logout" />
+                  <span>Login</span>
+                </button>
+              </Link>
+            </div>
+          }
+
+        </div>
+        
+
           
           <div className='md:hidden mx-4'>
             <button onClick={handleClick} className='flex flex-col gap-[3.5px] w-10 h-10 items-center justify-center'>
