@@ -5,7 +5,7 @@ import { ShopContext } from '../../data/ShopContext';
 const OurProducts = () => {
   const [visibleProduct, setVisibleProduct] = useState(8);
 
-  const allProducts = useContext(ShopContext);
+  const allProducts = useContext(ShopContext).products;
 
   const addVisibleProduct = () => {
     setVisibleProduct(visibleProduct + 20)

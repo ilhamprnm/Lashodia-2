@@ -16,8 +16,22 @@ export const ShopContextProvider = (props) => {
     
   },[])
 
+  const addToCart = (itemId) => {
+    if(localStorage.getItem('auth-token')){
+      fetch('http://localhost:4000/addtocart', {
+        method:"POST",
+        headers: {
+          Accept:'application/form-data',
+          'auth-token':`${localStorage.getItem('auth-token')}`,
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify({"itemId":itemId})
+      })
+    }
+  }
+
   return (
-    <ShopContext.Provider value={products}>
+    <ShopContext.Provider value={{products, addToCart}}>
       {props.children}
     </ShopContext.Provider>
   )

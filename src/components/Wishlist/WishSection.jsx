@@ -4,7 +4,7 @@ import { ShopContext } from '../../data/ShopContext'
 
 const WishSection = () => {
 
-  const allProducts = useContext(ShopContext)
+  const allProducts = useContext(ShopContext).products;
 
   return (
     <div className='mt-[130px] px-2 min-[876px]:px-20 flex flex-col py-10'>

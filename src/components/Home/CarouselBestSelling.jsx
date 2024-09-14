@@ -6,7 +6,7 @@ import { ShopContext } from '../../data/ShopContext';
 
 const CarouselBestSelling = () => {
 
-  const allProducts = useContext(ShopContext)
+  const allProducts = useContext(ShopContext).products;
 
   const responsive = {
     superLargeDesktop: {

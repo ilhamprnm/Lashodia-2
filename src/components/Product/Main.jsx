@@ -7,7 +7,7 @@ import { ShopContext } from '../../data/ShopContext'
 
 const Main = () => {
 
-  const allProducts = useContext(ShopContext)
+  const allProducts = useContext(ShopContext).products;
 
   const {productId} = useParams();
   const product = allProducts.find((e) => e.id === Number(productId))
