@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import cartIcon from '../../icons/cart.png'
 import deliveryIcon from '../../icons/icon-delivery.png'
@@ -8,6 +8,24 @@ import { ShopContext } from '../../data/ShopContext'
 const Main = () => {
 
   const allProducts = useContext(ShopContext).products;
+  const addToCart = useContext(ShopContext).addToCart;
+  const [productQuantity,setProductQuantity] = useState(1);
+
+  const handleChange = (e) => {
+    setProductQuantity(e.target.value)
+  }
+
+  const handleInc = () => {
+    if (productQuantity < 99)
+    setProductQuantity(productQuantity + 1)
+  }
+
+  const handleDec = () => {
+    if (productQuantity > 1) {
+      setProductQuantity(productQuantity - 1)
+    }
+  }
+
 
   const {productId} = useParams();
   const product = allProducts.find((e) => e.id === Number(productId))
@@ -83,24 +101,26 @@ const Main = () => {
             </div>
             <div className='flex gap-5'>
               <div className='flex items-center rounded-sm'>
-                <button className='w-10 h-full border hover:bg-[#da4445] font-semibold hover:text-white'>+</button>
+                <button className='w-10 h-full border hover:bg-[#da4445] font-semibold hover:text-white' onClick={handleDec}>-</button>
                 <input 
-                  className='max-w-12 h-full border-y focus:outline-none px-1 text-center' 
-                  defaultValue={1} 
+                  className='max-w-12 h-full border-y focus:outline-none px-1 text-center'  
                   type="text" 
                   min={1}
                   max={100}
-                  onInput={(e) => e.target.value = e.target.value.replace(/[^0-9]/g, '')} />
-                <button className='w-10 h-full border hover:bg-[#da4445] font-semibold hover:text-white'>-</button>
+                  value={productQuantity}
+                  onInput={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                    if (e.target.value.length > 2) { 
+                      e.target.value = e.target.value.slice(0, 2);
+                    }
+                  }}
+                  onChange={handleChange} />
+                <button className='w-10 h-full border hover:bg-[#da4445] font-semibold hover:text-white' onClick={handleInc}>+</button>
               </div>
               <div>
-                <button className='h-full px-8 rounded-sm text-white font-semibold bg-[#da4445]'>Buy Now</button>
+                <button className='h-full px-8 py-3 rounded-sm text-white font-semibold bg-[#da4445]' onClick={() => {addToCart(product,productQuantity)}}>Add to Cart</button>
               </div>
-              <div>
-                <button className='p-2 border rounded-sm hover:bg-gray-100'>
-                  <img className='h-6' src={cartIcon} alt="" />
-                </button>
-              </div>
+              
             </div>
 
             <div className='border'>

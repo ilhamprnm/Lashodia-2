@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import na1 from '../../images/NA-1.png'
 import na2 from '../../images/NA-2.png'
 import na3 from '../../images/NA-3.png'
@@ -18,10 +18,11 @@ const NewArrival = () => {
       scrollTrigger: {
         trigger: '#NA-text',
         toggleActions: 'restart reverse restart reverse',
-        start: 'top 100%',
+        start: 'top 140%',
       }
     })
   })
+
 
   return (
     <div className='mt-14 p-2 min-[876px]:px-20 flex flex-col gap-3'>

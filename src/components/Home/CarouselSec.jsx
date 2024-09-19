@@ -8,6 +8,7 @@ import { ShopContext } from '../../data/ShopContext';
 const CarouselSec = () => {
 
   const allProducts = useContext(ShopContext).products;
+  const addToCart = useContext(ShopContext).addToCart;
 
   const responsive = {
     superLargeDesktop: {
@@ -86,7 +87,7 @@ const CarouselSec = () => {
                     <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
                   </div>
                   <div>
-                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2'>Add to Cart</button>
+                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {addToCart(product)}}>Add to Cart</button>
                   </div>
                 </div>
               </div>

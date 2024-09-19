@@ -13,7 +13,7 @@ const Features = () => {
   };
 
   return (
-    <div className='p-2 min-[876px]:px-20 flex flex-col justify-center gap-10 mt-10 mb-5'>
+    <div className='p-2 py-20 min-[876px]:px-20 flex flex-col justify-center gap-10 mt-10 mb-5'>
       <div className='flex flex-col min-[660px]:flex-row gap-10 min-[660px]:gap-20 justify-center'>
         <div className='flex flex-col items-center text-center justify-center'>
           <div>

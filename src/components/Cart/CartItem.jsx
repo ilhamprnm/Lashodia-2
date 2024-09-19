@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '../../cart.css'
 import { Link } from 'react-router-dom'
+import { ShopContext } from '../../data/ShopContext'
 
 const CartItem = (props) => {
-  
+
+  const removeFromCart = useContext(ShopContext).removeFromCart;
 
   return (
     <div className='flex font-semibold border p-4'>
@@ -16,10 +18,13 @@ const CartItem = (props) => {
           <p >${props.productPrice}</p>
         </div>
         <div className='flex-1 flex items-center justify-center '>
-          <input className='max-w-14 focus:outline-none quantity-input' min={0} max={100} defaultValue={1}  type="number" />
+          <p>{props.productQuantity}</p>
         </div>
         <div className='flex-1 flex items-center justify-center'>
           ${ props.productPrice}
+        </div>
+        <div className='flex-1 flex items-center justify-center'>
+          <p className='font-normal hover:text-red-500 cursor-pointer' onClick={() => {removeFromCart(props)}}>hapus</p>
         </div>
       </div>
   )

@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CarouselRelatedProduct from './CarouselRelatedProduct'
-import { products } from '../../data/product'
 import { useParams } from 'react-router-dom'
+import { ShopContext } from '../../data/ShopContext'
 
 const BestSelling = () => {
+
+  const allProducts = useContext(ShopContext).products;
   const {productId} = useParams();
-  const productInDisplay = products.find((e) => e.id === Number(productId))
+  const productInDisplay = allProducts.find((e) => e.id === Number(productId))
 
   return (
     <div className='mt-14 p-2 min-[876px]:px-20 flex flex-col gap-3 pb-20'>
