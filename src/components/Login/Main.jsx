@@ -16,7 +16,7 @@ const Main = () => {
   const handleLogin = async () => {
     console.log(formData)
     let responseData;
-    await fetch('http://localhost:4000/login', {
+    await fetch('https://lashodia-2-backend.vercel.app/login', {
       method:'POST',
       headers: {
         Accept:'application/form-data',

@@ -8,7 +8,7 @@ export const ShopContextProvider = (props) => {
   const [cartData,setCartData] = useState([]);
 
   const updateData = () => {
-    fetch("http://localhost:4000/allproducts")
+    fetch("https://lashodia-2-backend.vercel.app/allproducts")
       .then((response) => response.json())
       .then((data) =>{
         
@@ -17,7 +17,7 @@ export const ShopContextProvider = (props) => {
       })
     
     if(localStorage.getItem('auth-token')){
-      fetch('http://localhost:4000/getcartdata', {
+      fetch('https://lashodia-2-backend.vercel.app/getcartdata', {
         method:"GET",
         headers: {
           Accept:'application/form-data',
@@ -39,7 +39,7 @@ export const ShopContextProvider = (props) => {
 
   const addToCart = (product,quantity) => {
     if(localStorage.getItem('auth-token')){
-      fetch('http://localhost:4000/addtocart', {
+      fetch('https://lashodia-2-backend.vercel.app/addtocart', {
         method:"POST",
         headers: {
           Accept:'application/form-data',
@@ -64,7 +64,7 @@ export const ShopContextProvider = (props) => {
 
   const removeFromCart = (product) => {
     if(localStorage.getItem('auth-token')){
-      fetch('http://localhost:4000/removefromcart', {
+      fetch('https://lashodia-2-backend.vercel.app/removefromcart', {
         method:"POST",
         headers: {
           Accept:'application/form-data',
