@@ -16,7 +16,7 @@ const Main = () => {
   }
 
   const handleSignup = async () => {
-    console.log(formData)
+    
     let responseData;
     await fetch('https://lashodia-2-backend.vercel.app/signup', {
       method:'POST',
