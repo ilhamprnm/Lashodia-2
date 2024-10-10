@@ -11,17 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const NewArrival = () => {
 
-  useGSAP(() => {
-    gsap.to('#NA-text', {
-      y: 0,
-      opacity: 1,
-      scrollTrigger: {
-        trigger: '#NA-text',
-        toggleActions: 'restart reverse restart reverse',
-        start: 'top 140%',
-      }
-    })
-  })
+  
 
 
   return (
@@ -45,7 +35,7 @@ const NewArrival = () => {
           <div>
             <img src={na1} alt="new-arrival" />
           </div>
-          <div className='absolute bottom-8 left-8 text-white flex flex-col gap-2 opacity-0 translate-y-20' id='NA-text'>
+          <div className='absolute bottom-8 left-8 text-white flex flex-col gap-2 ' id='NA-text'>
             <div>
               <h2 className='text-2xl'>PlayStation 5</h2>
             </div>
@@ -62,7 +52,7 @@ const NewArrival = () => {
             <div>
               <img src={na2} alt="new-arrival" />
             </div>
-            <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 opacity-0 translate-y-20' id='NA-text'>
+            <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 ' id='NA-text'>
               <div>
                 <h2 className='text-xl'>Women's Collections</h2>
               </div>
@@ -79,7 +69,7 @@ const NewArrival = () => {
               <div>
                 <img src={na3} alt="new-arrival" />
               </div>
-              <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 opacity-0 translate-y-20' id='NA-text'>
+              <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 ' id='NA-text'>
                 <div>
                   <h2 className='text-lg'>Speakers</h2>
                 </div>
@@ -95,7 +85,7 @@ const NewArrival = () => {
               <div>
                 <img src={na4} alt="new-arrival" />
               </div>
-              <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 opacity-0 translate-y-20' id='NA-text'>
+              <div className='absolute bottom-4 left-4 text-white flex flex-col gap-1 ' id='NA-text'>
                 <div>
                   <h2 className='text-lg'>Perfume</h2>
                 </div>
