@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import sideImage from '../../images/side-image.png'
 
 
@@ -68,7 +69,9 @@ const Main = () => {
             </button>
           </div>
           <div className='text-center '>
-            <p>Already have account? <a href='/login' className='underline'>Log In</a></p>
+            <p>Already have account ? 
+              <Link to={'/login'}> <a className='underline'>Log In</a></Link>
+            </p>
           </div>
         </div>
       </div>
