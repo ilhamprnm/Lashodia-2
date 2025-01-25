@@ -12,7 +12,7 @@ const WishSection = () => {
         <div className='flex items-center gap-3'>
           <div className='w-5 h-7 bg-red-500 rounded-sm'>
           </div>
-          <h2 className='font-semibold text-lg'>Just For You</h2>
+          <h2 className='font-semibold text-lg'>Just For You !</h2>
         </div>
         <div>
           <button className='border border-gray-400 p-2 px-8 rounded font-semibold text-sm'> 
