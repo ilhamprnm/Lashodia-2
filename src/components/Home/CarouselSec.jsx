@@ -1,14 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../data/ShopContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProduct } from '../../store/slices/productSlice';
+import { addToCart, fetchCartData } from '../../store/slices/userSlice';
 
 
 const CarouselSec = () => {
+  const dispatch = useDispatch();
+  const { allProduct } = useSelector((state) => state.product);
 
-  const allProducts = useContext(ShopContext).products;
-  const addToCart = useContext(ShopContext).addToCart;
+  useEffect(() => {
+    dispatch(fetchAllProduct());
+  }, [])
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({product:product}));
+    dispatch(fetchCartData());
+  }
 
   const responsive = {
     superLargeDesktop: {
@@ -37,7 +48,7 @@ const CarouselSec = () => {
 
   return (
     <Carousel responsive={responsive} >
-      {allProducts.slice(0, 9).map((product) => {
+      {allProduct.slice(0, 9).map((product) => {
 
         const ratingValue = product.rating.rate * 10;
         let roundedRating ; 
@@ -87,7 +98,7 @@ const CarouselSec = () => {
                     <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
                   </div>
                   <div>
-                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {addToCart(product)}}>Add to Cart</button>
+                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {handleAddToCart(product)}}>Add to Cart</button>
                   </div>
                 </div>
               </div>

@@ -1,15 +1,26 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import cartIcon from '../../icons/cart.png'
 import deliveryIcon from '../../icons/icon-delivery.png'
 import returnIcon from '../../icons/Icon-return.png'
 import { ShopContext } from '../../data/ShopContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchAllProduct } from '../../store/slices/productSlice'
+import { addToCart } from '../../store/slices/userSlice'
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const {allProduct} = useSelector((state) => state.product);
 
-  const allProducts = useContext(ShopContext).products;
-  const addToCart = useContext(ShopContext).addToCart;
+  useEffect(() => {
+    dispatch(fetchAllProduct());
+  }, [])
+
   const [productQuantity,setProductQuantity] = useState(1);
+
+  const handleAddToCart = (product,productQuantity) => {
+    dispatch(addToCart({product:product,quantity:productQuantity}))
+  }
 
   const handleChange = (e) => {
     setProductQuantity(e.target.value)
@@ -28,9 +39,9 @@ const Main = () => {
 
 
   const {productId} = useParams();
-  const product = allProducts.find((e) => e.id === Number(productId))
+  const product = allProduct.find((e) => e.id === Number(productId))
 
-  if (!allProducts || allProducts.length === 0) {
+  if (!allProduct || allProduct.length === 0) {
     return <div>Loading...</div>; // You can show a loading spinner or message
   }
 
@@ -118,7 +129,7 @@ const Main = () => {
                 <button className='w-10 h-full border hover:bg-[#da4445] font-semibold hover:text-white' onClick={handleInc}>+</button>
               </div>
               <div>
-                <button className='h-full px-8 py-3 rounded-sm text-white font-semibold bg-[#da4445]' onClick={() => {addToCart(product,productQuantity)}}>Add to Cart</button>
+                <button className='h-full px-8 py-3 rounded-sm text-white font-semibold bg-[#da4445]' onClick={() => {handleAddToCart(product,productQuantity)}}>Add to Cart</button>
               </div>
               
             </div>

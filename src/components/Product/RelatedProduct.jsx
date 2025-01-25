@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import CarouselRelatedProduct from './CarouselRelatedProduct'
 import { useParams } from 'react-router-dom'
-import { ShopContext } from '../../data/ShopContext'
+import { useSelector } from 'react-redux'
 
 const BestSelling = () => {
+  const { allProduct } = useSelector((state) => state.product)
 
-  const allProducts = useContext(ShopContext).products;
   const {productId} = useParams();
-  const productInDisplay = allProducts.find((e) => e.id === Number(productId))
+  const productInDisplay = allProduct.find((e) => e.id === Number(productId))
 
   return (
     <div className='mt-14 p-2 min-[876px]:px-20 flex flex-col gap-3 pb-20'>

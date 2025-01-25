@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import search from "../../icons/search.png";
 import wishlist from "../../icons/wishlist.png";
 import cart from '../../icons/cart.png';
@@ -7,10 +7,16 @@ import { Link } from 'react-router-dom';
 import userIcon from '../../icons/user-icon.png';
 import logoutIcon from '../../icons/logout.png'
 import { ShopContext } from '../../data/ShopContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartData } from '../../store/slices/userSlice';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { cartData } = useSelector((state) => state.user);
 
-  const cartData = useContext(ShopContext).cartData;
+  useEffect(() => {
+    dispatch(fetchCartData());
+  }, [])
 
   const [opened, setOpened] = useState(false);
 
@@ -81,7 +87,7 @@ const Navbar = () => {
                 <img className='h-7 w-7 hover:cursor-pointer' src={cart} alt="cart-icon" />
               </Link>
               {localStorage.getItem('auth-token')?<div className='bg-red-500 rounded-full h-5 w-5 absolute left-[18px] top-0 flex justify-center items-center'>
-                <span className='text-sm text-white'>{cartData.length}</span>
+                <span className='text-sm text-white'>{cartData?.cartData?.length}</span>
               </div>:''}
               
             </div>

@@ -1,15 +1,23 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import { ShopContext } from '../../data/ShopContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllProduct } from '../../store/slices/productSlice';
+import { addToCart, fetchCartData } from '../../store/slices/userSlice';
 
 const OurProducts = () => {
-  const [visibleProduct, setVisibleProduct] = useState(8);
+  const dispatch = useDispatch();
+  const { allProduct } = useSelector((state) => state.product);
 
-  const allProducts = useContext(ShopContext).products;
-  const addToCart = useContext(ShopContext).addToCart;
+  const [visibleProduct, setVisibleProduct] = useState(8);
 
   const addVisibleProduct = () => {
     setVisibleProduct(visibleProduct + 20)
+  }
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({product:product})); 
+    dispatch(fetchCartData())
   }
 
   return (
@@ -30,7 +38,7 @@ const OurProducts = () => {
 
       <div>
         <div className='flex flex-wrap justify-center'>
-          {allProducts.slice(0, visibleProduct).map((product) => {
+          {allProduct.slice(0, visibleProduct).map((product) => {
 
             const ratingValue = product.rating.rate * 10;
             let roundedRating ; 
@@ -80,7 +88,7 @@ const OurProducts = () => {
                           <img className='h-[18px]' src={(`ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
                         </div>
                         <div>
-                          <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {addToCart(product)}}>Add to Cart</button>
+                          <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {handleAddToCart(product)}}>Add to Cart</button>
                         </div>
                       </div>
                     </div>
@@ -88,7 +96,7 @@ const OurProducts = () => {
         </div>
       </div>
 
-      <div className={`flex justify-center mt-8 ${visibleProduct >= allProducts.length ? 'hidden' : ''}`}>
+      <div className={`flex justify-center mt-8 ${visibleProduct >= allProduct.length ? 'hidden' : ''}`}>
         <button className='bg-[#da4446] p-3 px-10 text-white font-semibold rounded' onClick={addVisibleProduct}>View All Products</button>
       </div>
 

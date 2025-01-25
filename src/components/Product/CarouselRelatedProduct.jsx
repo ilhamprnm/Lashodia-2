@@ -1,14 +1,19 @@
 import React, { useContext } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { products } from '../../data/product';
 import { Link } from 'react-router-dom';
-import { ShopContext } from '../../data/ShopContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../store/slices/userSlice';
 
 const CarouselBestSelling = (props) => {
+  const dispatch = useDispatch();
 
-  const allProducts = useContext(ShopContext).products;
-  const addToCart = useContext(ShopContext).addToCart;
+  const { allProduct } = useSelector((state) => state.product)
+
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart({product:product}))
+  }
 
   const responsive = {
     superLargeDesktop: {
@@ -35,7 +40,7 @@ const CarouselBestSelling = (props) => {
   };
 
 
-  const filteredProducts = allProducts.filter(product => props.productInDisplay.category === product.category)
+  const filteredProducts = allProduct.filter(product => props.productInDisplay.category === product.category)
 
   const filterPID = filteredProducts.filter(product => props.productInDisplay.id != product.id)
 
@@ -92,7 +97,7 @@ const CarouselBestSelling = (props) => {
                     <img className='h-[18px]' src={(`/ratings/rating-${roundedRating}.png`)} alt="rating" /> <span>({product.rating.count})</span>
                   </div>
                   <div>
-                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {addToCart(product)}}>Add to Cart</button>
+                    <button className='bg-black w-full text-white p-2 rounded-sm mt-2' onClick={() => {handleAddToCart(product)}}>Add to Cart</button>
                   </div>
                 </div>
               </div>

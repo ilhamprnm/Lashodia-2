@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import '../../cart.css'
 import { Link } from 'react-router-dom'
-import { ShopContext } from '../../data/ShopContext'
+import { useDispatch } from 'react-redux'
+import { fetchCartData, removeFromCart } from '../../store/slices/userSlice'
 
 const CartItem = (props) => {
-
-  const removeFromCart = useContext(ShopContext).removeFromCart;
+  const dispatch = useDispatch();
 
   return (
     <div className='flex font-semibold border p-4'>
@@ -21,10 +21,10 @@ const CartItem = (props) => {
           <p>{props.productQuantity}</p>
         </div>
         <div className='flex-1 flex items-center justify-center'>
-          ${ props.productPrice}
+          ${ props.productPrice * props.productQuantity}
         </div>
         <div className='flex-1 flex items-center justify-center'>
-          <p className='font-normal hover:text-red-500 cursor-pointer' onClick={() => {removeFromCart(props)}}>hapus</p>
+          <p className='font-normal hover:text-red-500 cursor-pointer' onClick={() => {dispatch(removeFromCart(props)); dispatch(fetchCartData())}}>hapus</p>
         </div>
       </div>
   )

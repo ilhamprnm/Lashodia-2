@@ -3,15 +3,23 @@ import { products } from '../../data/product'
 import CartItem from './CartItem'
 import { ShopContext } from '../../data/ShopContext'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchCartData } from '../../store/slices/userSlice'
 
 
 const CartSection = () => {
+  const dispatch = useDispatch()
+  const { cartData } = useSelector((state) => state.user);
 
-  const cartData = useContext(ShopContext).cartData;
+  useEffect(() => {
+    dispatch(fetchCartData())
+
+  }, [])
+
   const [subTotal,setSubTotal] = useState(0)
 
   useEffect(() => {
-    const total = cartData.reduce((accumulator, product) => {
+    const total = cartData?.cartData?.reduce((accumulator, product) => {
       const priceInt = product.price * 100; 
       const priceXquan = priceInt * product.quantity;
       return accumulator + priceXquan;
@@ -36,7 +44,7 @@ const CartSection = () => {
         <div className='flex-1 flex justify-center'>Action</div>
       </div>
 
-      {cartData.map((product) => {
+      {cartData?.cartData?.map((product) => {
         return (
           <CartItem 
             key={product.productId}

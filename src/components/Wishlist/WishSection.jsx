@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
 import Item from '../Item'
 import { ShopContext } from '../../data/ShopContext'
+import { useSelector } from 'react-redux'
 
 const WishSection = () => {
+  const { allProduct } = useSelector((state) => state.product);
 
-  const allProducts = useContext(ShopContext).products;
-
+  
   return (
     <div className='mt-[130px] px-2 min-[876px]:px-20 flex flex-col py-10'>
       <div className='flex justify-between'>
@@ -20,7 +21,7 @@ const WishSection = () => {
       </div>
 
       <div className=' mt-4 flex justify-center flex-wrap'>
-        {allProducts.slice(0, 4).map((product) => {
+        {allProduct.slice(0, 4).map((product) => {
           const ratingValue = product.rating.rate * 10;
           let roundedRating ; 
           const roundRating = () => {
