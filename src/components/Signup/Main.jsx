@@ -19,7 +19,7 @@ const Main = () => {
   const handleSignup = async () => {
     
     let responseData;
-    await fetch('https://lashodia-2-backend.vercel.app/signup', {
+    await fetch('https://lashodia-2-backend.vercel.app/api/auth/signup', {
       method:'POST',
       headers: {
         Accept:'application/form-data',
