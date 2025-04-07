@@ -6,7 +6,7 @@ export const fetchCartData = createAsyncThunk (
   "user/getCartData",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.get("/getcartdata",
+      const response = await axiosInstance.get("/api/cart/getcartdata",
         {
         headers: {
           Accept:'application/form-data',
@@ -26,7 +26,7 @@ export const addToCart = createAsyncThunk (
   "user/addToCart",
   async (dataProduct, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/addtocart", dataProduct, {
+      const response = await axiosInstance.post("/api/cart/addtocart", dataProduct, {
         headers: {
           Accept:'application/form-data',
           'auth-token':`${localStorage.getItem('auth-token')}`,
@@ -47,7 +47,7 @@ export const removeFromCart = createAsyncThunk (
   "user/removeToCart",
   async (product, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post("/removefromcart", product, {
+      const response = await axiosInstance.post("/api/cart/removefromcart", product, {
         headers: {
           Accept:'application/form-data',
           'auth-token':`${localStorage.getItem('auth-token')}`,
